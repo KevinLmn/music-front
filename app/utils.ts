@@ -1,25 +1,30 @@
-export enum Member {
-  Marc,
-  Polo,
-  Jules,
-}
-
 type MemberInfo = {
   title: string;
-  instrument: string;
+  video: string;
+  description: string;
 };
 
-export const memberDetails: Record<Member, MemberInfo> = {
-  [Member.Marc]: {
+export type MemberName = "Polo" | "Marc" | "Jules";
+
+export const memberDetails: Record<MemberName, MemberInfo> = {
+  Marc: {
     title: "Our talented Marc !",
-    instrument: "piano",
+    video: "macmiller",
+    description: "Marc is a talented guy",
   },
-  [Member.Polo]: {
+  Polo: {
     title: "The amazing Polo !",
-    instrument: "guitar",
+    video: "fkj",
+    description: "Polo is an amazing guy",
   },
-  [Member.Jules]: {
+  Jules: {
     title: "The incredible Jules !",
-    instrument: "saxophone",
+    video: "saxophone",
+    description: "Jules is an incredible guy",
   },
 };
+
+export interface VideoPlayerProps {
+  videoName: string | null;
+  play: boolean;
+}

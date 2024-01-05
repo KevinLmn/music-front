@@ -8,6 +8,13 @@ export default function Navbar() {
       >
         <div>Github</div>
       </a>
+      <a
+        href="https://www.github.com/kevinlmn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div>Github</div>
+      </a>
     </div>
   );
 }
