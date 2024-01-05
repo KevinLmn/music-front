@@ -3,7 +3,7 @@
 import ListItem from "@/components/ListItem/ListItem";
 import Navbar from "@/components/Navbar/Navbar";
 import SimpleSlider from "@/components/Slider/Slider";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
@@ -18,7 +18,7 @@ export default function Home() {
   const [videoName, setVideoName] = useState<string | null>(null);
   const [isVideoVisible, setIsVideoVisible] = useState<boolean>(false);
   const [player, setPlayer] = useState<MemberName>("Marc");
-  const [isVideoTimingSaved, setIsVideoTimingSaved] = useState<boolean>(false);
+  const [isVideoTimingSaved, setIsVideoTimingSaved] = useState<boolean>(true);
   const [hello, setHello] = useState<MemberName[]>(["Polo", "Marc", "Jules"]);
   const videoRef = useRef(null);
 
@@ -82,29 +82,20 @@ export default function Home() {
               </h2>
               {hello.length > 0 &&
                 hello.map((member: MemberName, index: number) => (
-                  <ListItem
-                    key={index}
-                    setVideoName={setVideoName}
-                    setPlayer={setPlayer}
-                    member={member}
-                    makeNewOrder={makeNewOrder}
-                    player={player}
-                  />
+                  <>
+                    <ListItem
+                      key={index}
+                      setVideoName={setVideoName}
+                      setPlayer={setPlayer}
+                      member={member}
+                      makeNewOrder={makeNewOrder}
+                      player={player}
+                    />
+                  </>
                 ))}
             </div>
           </div>
           <div className="w-3/4 flex flex-col gap-8 justify-center items-center bg-[#1c1f1d]">
-            <button onClick={() => setIsVideoTimingSaved(!isVideoTimingSaved)}>
-              <div
-                className={`text-white p-2 rounded-md flex gap-2 items-center ${
-                  isVideoTimingSaved && "bg-[#966F33] text-[#ffffff]"
-                }`}
-              >
-                <p>Save current video timing after switching</p>
-
-                {isVideoTimingSaved && <FontAwesomeIcon icon={faCheck} />}
-              </div>
-            </button>
             <div
               ref={videoRef}
               className="w-3/4 flex justify-center items-center"
@@ -115,6 +106,20 @@ export default function Home() {
                 isVideoTimingSaved={isVideoTimingSaved}
               />
             </div>
+            <button onClick={() => setIsVideoTimingSaved(!isVideoTimingSaved)}>
+              <div
+                className={`text-white p-2 rounded-md flex gap-2 items-center border-2 ${
+                  isVideoTimingSaved && "bg-[#966F33] text-[#ffffff]"
+                }`}
+              >
+                Save current video timing after switching
+                {isVideoTimingSaved ? (
+                  <FontAwesomeIcon icon={faCheck} />
+                ) : (
+                  <FontAwesomeIcon icon={faXmark} />
+                )}
+              </div>
+            </button>
           </div>
         </div>
       </div>

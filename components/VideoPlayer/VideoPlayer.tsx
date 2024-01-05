@@ -30,7 +30,7 @@ const VideoPlayer = ({
     setIsPlayerInitialized(false);
   }, [videoName]);
 
-  const handleProgress = (progress) => {
+  const handleProgress = (progress: any) => {
     localStorage.setItem(
       `videoTime-${videoName}`,
       String(progress.playedSeconds)

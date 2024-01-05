@@ -19,7 +19,7 @@ export default function ListItem({
 }: ListItemProps) {
   return (
     <button
-      className={`block p-2 rounded text-[#f7efe1] hover:text-[#966F33] hover:bg-black ${
+      className={`block p-2 w-60 rounded text-[#f7efe1] hover:text-[#966F33] hover:bg-black ${
         player === member && "bg-gray-900 dark:bg-gray-800 "
       }`}
       onClick={() => {
