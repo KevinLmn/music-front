@@ -12,7 +12,9 @@ const VideoPlayer = ({
   isVideoVisible,
   isVideoTimingSaved,
 }: VideoPlayerProps) => {
-  const videoUrl = `http://91.134.88.76/back/video?videoName=macmiller`;
+  const videoUrl = `http://91.134.88.76/api/video?videoName=${encodeURIComponent(
+    videoName ?? "macmiller"
+  )}`;
   console.log(videoUrl, "hey");
 
   const [isPlayerInitialized, setIsPlayerInitialized] = useState(false);
