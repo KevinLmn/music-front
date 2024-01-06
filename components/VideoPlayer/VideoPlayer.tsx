@@ -12,9 +12,9 @@ const VideoPlayer = ({
   isVideoVisible,
   isVideoTimingSaved,
 }: VideoPlayerProps) => {
-  const videoUrl = `http://localhost:8000/video?videoName=${encodeURIComponent(
-    videoName ?? "macmiller"
-  )}`;
+  const videoUrl = `${
+    process.env.REACT_APP_API_URL
+  }/api/video?videoName=${encodeURIComponent(videoName ?? "macmiller")}`;
   const [isPlayerInitialized, setIsPlayerInitialized] = useState(false);
 
   useEffect(() => {
